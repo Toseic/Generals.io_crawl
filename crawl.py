@@ -1,5 +1,5 @@
 from urllib import response
-import requests,json,time
+import requests,json,time,os
 from bs4 import BeautifulSoup
 import urllib.request
 import lzstring
@@ -88,7 +88,10 @@ def gior_crawl(replay_id):
 # replay_crawl('bucknuggets21')
 # gior_crawl("rc4Yr3lC_")
 def main():
-
+    for path in [f'./gior/',f'./replay_id/']:
+        if not os.path.exists(path):
+            print('mkdir '+path)
+            os.makedirs(path)
     people_list = people_id_crawl(crawl_season)
     people_list_len = len(people_list)
     for i in range(people_top_num):
@@ -96,7 +99,6 @@ def main():
         replay_crawl(person_id, True)
 
 
-    pass
 
 
 if __name__ == '__main__':
