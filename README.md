@@ -1,1 +1,1 @@
-[generals.io](https://generals.io) AI训练集数据爬取
+[generals.io](https://generals.io) AI训练集数据爬取以及处理

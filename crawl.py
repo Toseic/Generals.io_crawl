@@ -44,7 +44,7 @@ def replay_crawl(people_id, crawl_now = False):
     
     json_data_select = []
     while True:
-        time.sleep(1)
+        time.sleep(0.3)
         print("crawling url="+people_url.format(people_id,offset,count))
         for i in range(5):
             response = requests.get(url=people_url.format(people_id,offset,count), 
@@ -64,6 +64,7 @@ def replay_crawl(people_id, crawl_now = False):
             if json_data[i]["type"] == '1v1':
                 json_data_select.append(json_data[i]["id"])
                 if (crawl_now == True):
+                    print("user {}".format(people_id), end=" ")
                     gior_crawl(json_data[i]["id"])
         offset += count
     with open("./replay_id/{}.json".format(people_id),"w") as a:
@@ -75,7 +76,7 @@ def gior_crawl(replay_id):
     urllib.request.urlretrieve(f"https://generalsio-replays-na.s3.amazonaws.com/{replay_id}.gior",
          f"./gior/{replay_id}.gior")
     lz = lzstring.LZString()
-        
+    print("downloading "+replay_id, end=": ")
     with open(f"./gior/{replay_id}.gior", mode="rb") as compressed_rep:
         compressed_arr = compressed_rep.read()
         compressed_str = ""
@@ -83,7 +84,8 @@ def gior_crawl(replay_id):
             compressed_str += chr(compressed_arr[2 * i] * 256 + compressed_arr[2 * i + 1])
         rep = json.loads(lz.decompress(compressed_str))
         # print(rep)
-    
+        
+    print("done.")
 # people_id_crawl(21)
 # replay_crawl('bucknuggets21')
 # gior_crawl("rc4Yr3lC_")
