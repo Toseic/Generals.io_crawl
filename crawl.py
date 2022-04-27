@@ -40,7 +40,7 @@ def replay_crawl(people_id, crawl_now = False):
     # people_url = "https://generals.io/profiles/{}".format(people_id)
     offset, count = 0,100
     people_url = "https://generals.io/api/replaysForUsername?u={}&offset={}&count={}"
-        
+
     
     json_data_select = []
     while True:
@@ -67,7 +67,7 @@ def replay_crawl(people_id, crawl_now = False):
                     print("user {}".format(people_id), end=" ")
                     gior_crawl(json_data[i]["id"])
         offset += count
-    with open("./replay_id/{}.json".format(people_id),"w") as a:
+    with open("./replay_id/{}.json".format(people_id),"a+") as a:
         json.dump(json_data_select, a)
     
         # print(json_data_select)
@@ -77,7 +77,7 @@ def gior_crawl(replay_id):
          f"./gior/{replay_id}.gior")
     lz = lzstring.LZString()
     print("downloading "+replay_id, end=": ")
-    with open(f"./gior/{replay_id}.gior", mode="rb") as compressed_rep:
+    with open(f"./gior/{replay_id}.gior", mode="a+") as compressed_rep:
         compressed_arr = compressed_rep.read()
         compressed_str = ""
         for i in range(int(len(compressed_arr) / 2)):
@@ -90,10 +90,10 @@ def gior_crawl(replay_id):
 # replay_crawl('bucknuggets21')
 # gior_crawl("rc4Yr3lC_")
 def main():
-    for path in [f'./gior/',f'./replay_id/']:
-        if not os.path.exists(path):
-            print('mkdir '+path)
-            os.makedirs(path)
+    # for path in [f'./gior/',f'./replay_id/']:
+    #     if not os.path.exists(path):
+    #         print('mkdir '+path)
+    #         os.makedirs(path)
     people_list = people_id_crawl(crawl_season)
     people_list_len = len(people_list)
     for i in range(people_top_num):
