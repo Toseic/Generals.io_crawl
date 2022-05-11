@@ -45,7 +45,7 @@ def replay_crawl(people_id):
         return False
     json_data_select = {}
     while True:
-        time.sleep(2)
+        time.sleep(5)
         print("crawling url="+people_url.format(people_id,offset,count))
         for i in range(5):
             response = requests.get(url=people_url.format(people_id,offset,count), 

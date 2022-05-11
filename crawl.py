@@ -91,7 +91,7 @@ def gior_crawl(replay_id):
 # gior_crawl("rc4Yr3lC_")
 def main():
     # for path in [f'./gior/',f'./replay_id/']:
-    #     if not os.path.exists(path):
+    #     if not os..exists(path):
     #         print('mkdir '+path)
     #         os.makedirs(path)
     people_list = people_id_crawl(crawl_season)
