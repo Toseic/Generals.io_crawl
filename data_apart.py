@@ -12,9 +12,7 @@ for path in path_list:
     num += len(replay_id_map)
     id_map = {**id_map,**replay_id_map}
 print(len(id_map),num)
-# all_id_file = open("./apart_id/{}.json".format("json_"+file_id),"w",encoding='utf-8')
-# json.dump(replay_id_map,replay_id_file)
-# replay_id_file.close()
+
 num = 0
 map_temp = {}
 for i in list(id_map.keys()):

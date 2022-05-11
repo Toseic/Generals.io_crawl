@@ -35,16 +35,7 @@ replay_id_list_len = len(replay_id_list)
 
 crawl_num = 200
 begin_place = 0
-# while True:
-#     if not replay_id_map[replay_id_list[begin_place]]:
-#         break
-#     if (begin_place == replay_id_list_len):
-#         break
-#     else: begin_place+=1
 
-# for i in range(crawl_num):
-#     if ((begin_place+i) == replay_id_list_len): break
-#     gior_crawl(replay_id_list[i])
 for i in range(replay_id_list_len):
     if replay_id_map[replay_id_list[i]]:
         begin_place+=1

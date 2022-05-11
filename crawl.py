@@ -86,14 +86,9 @@ def gior_crawl(replay_id):
         # print(rep)
         
     print("done.")
-# people_id_crawl(21)
-# replay_crawl('bucknuggets21')
-# gior_crawl("rc4Yr3lC_")
+
 def main():
-    # for path in [f'./gior/',f'./replay_id/']:
-    #     if not os..exists(path):
-    #         print('mkdir '+path)
-    #         os.makedirs(path)
+
     people_list = people_id_crawl(crawl_season)
     people_list_len = len(people_list)
     for i in range(people_top_num):

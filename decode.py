@@ -60,21 +60,9 @@ def file_check( myid : str):
         json.dump(datamap, mapfile)
     print("  isdone.")
 
-    # print(datamap)
-# file_check(replay_id)
-# def decode( path ):
-#     # user_id = "bucknuggets21"
-#     # id_file_path = f"./dataset/json/json1/{user_id}.json" 
-#     with open(path, "r") as id_file:
-#         id_list = json.load(id_file)
-#         # print(id_list)
-#         for id in id_list:
-#             file_check(id)
 
-# base_path = f"E:\CodePalace\cpp code\AI-game\Generals.io_crawl\dataset\gior1"
 if __name__ == '__main__':
     id_list = [filename[:-5] for filename in os.listdir(base_path)]
     print(len(id_list),id_list[0])
-    # file_check(id_list[0])
     pool=mp.Pool(processes=mp.cpu_count())#设置进程数目
     pool.map(file_check,id_list)

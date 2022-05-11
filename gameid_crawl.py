@@ -36,7 +36,7 @@ def people_id_crawl(season):
     return people_list
 
 def replay_crawl(people_id):
-    # people_url = "https://generals.io/profiles/{}".format(people_id)
+ 
     offset, count = 0,150
     people_url = "https://generals.io/api/replaysForUsername?u={}&offset={}&count={}"
     path = "./replay_id/{}.json".format(people_id)
@@ -60,7 +60,7 @@ def replay_crawl(people_id):
         if len_json_data == 0: 
             print("person id:{} all over".format(people_id))
             break
-        # if offset > 500: break
+  
         for i in range(len_json_data):
             if json_data[i]["type"] == '1v1' and\
             json_data[i]["ranking"][0]["stars"] >= 50 and\
@@ -68,7 +68,7 @@ def replay_crawl(people_id):
                 json_data_select[json_data[i]["id"]] = False
 
         offset += count
-    # return json_data_select
+
     with open("./replay_id/{}.json".format(people_id),"w") as a:
         json.dump(json_data_select, a)
     return True;
@@ -77,6 +77,6 @@ if __name__ == '__main__':
     people_list = people_id_crawl(22)
     game_map = {}
     for i in people_list:
-        # game_map = {**game_map,**replay_crawl(i)}
+
         if (replay_crawl(i)): time.sleep(60)
-        # print("crawl player:"+i+"over | replays "+str(len(game_map)))
+
